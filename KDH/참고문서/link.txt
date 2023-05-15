@@ -1,0 +1,13 @@
+Google meet 링크
+https://meet.google.com/kjh-jgcs-pjn
+
+데이터셋 링크
+
+- Regression Data
+https://www.kaggle.com/code/anmolbajpai/abalone-age-prediction-regression
+
+- Binary Classification
+https://www.kaggle.com/datasets/colearninglounge/predicting-pulsar-starintermediate
+
+- Multiple Classification
+https://www.kaggle.com/code/tahazafar/steel-plate-faults-data-analysis/notebook
