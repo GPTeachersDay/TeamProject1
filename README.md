@@ -9,7 +9,7 @@ git status
 # 브랜치 만들기
 git branch yeonjun2
 # 브랜치 삭제
-git branch -d yeonjun1
+git branch -d yeonjun2
 # 브랜치 이동
 git checkout yeonjun2
 ```
