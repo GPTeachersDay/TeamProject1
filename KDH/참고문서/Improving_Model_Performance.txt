@@ -1,0 +1,23 @@
+세팅 1
+
+np.random.seed(42)
+tf.random.set_seed(42)
+
+LEARNING_RATE = 0.01
+    EPOCH_COUNT = 100
+    MB_SIZE = 100
+    REPORT = 1
+    TRAIN_RATIO = 0.8
+
+model = tf.keras.Sequential([
+        tf.keras.layers.Dense(units=256, activation='relu', input_shape=(len(X_train.keys()),)),
+        tf.keras.layers.Dense(units=64, activation='relu'),
+        tf.keras.layers.Dense(units=32, activation='relu'),
+        tf.keras.layers.Dense(units=16, activation='relu'),
+        tf.keras.layers.Dense(units=1)
+    ])
+
+optimizer = tf.keras.optimizers.SGD(learning_rate=LEARNING_RATE) # SGD : 경사하강법을 기본적으로 사용하는 옵티마이저
+    model.compile(loss='mean_squared_error',
+                  optimizer=optimizer,
+                  metrics=[EvalAccuracy()])
