@@ -2,7 +2,7 @@
 import csv 
 import numpy as np
 
-# 정규분포를 갖는 난수값을 생성하기 위한 매개변수 정의 
+
 RND_MEAN, RND_STD = 0.0, 1.0
 LEARNING_RATE = 0.01
 
@@ -27,7 +27,7 @@ def load_dataset():
     
     # 1)파일 열기
     # open() 메서드를 통해 csv 파일을 열고 해당 변수를 csvfile 이라 지정
-    with open('.../Regression_data.csv') as csvfile: 
+    with open('./Regression_data.csv') as csvfile: 
         # 2)파일 읽기
         # csvfile 변수를 csv.reader() 메서드를 통해 읽고 변수화
         csvreader = csv.reader(csvfile) 
@@ -368,7 +368,7 @@ def run_test(x, y):
 
 # %%
 
-main()
+
 # %%
 
 
