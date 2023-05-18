@@ -248,6 +248,13 @@ _________________________________________________________________
 
 # 세팅 11 세팅 10에서 옵티마이저 Adam
 
+optimizer = tf.keras.optimizers.Adam(
+                                        learning_rate=0.001,
+                                        beta_1=0.9,
+                                        beta_2=0.99,
+                                        epsilon=1e-07
+                                        )
+
 ## Test Loss: 4.508
 ## Test Accuracy: 0.88
 
