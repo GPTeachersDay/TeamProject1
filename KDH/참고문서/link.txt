@@ -11,3 +11,6 @@ https://www.kaggle.com/datasets/colearninglounge/predicting-pulsar-starintermedi
 
 - Multiple Classification
 https://www.kaggle.com/code/tahazafar/steel-plate-faults-data-analysis/notebook
+
+- Predicting the age of an Abalone from physical measurements.
+https://rstudio-pubs-static.s3.amazonaws.com/373537_eb1b5ce692704e849656d48ae308f076.html
