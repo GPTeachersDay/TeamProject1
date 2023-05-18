@@ -1,23 +1,194 @@
-세팅 1
+# 기본 세팅
+Model: "sequential_2"
 
 np.random.seed(42)
 tf.random.set_seed(42)
 
-LEARNING_RATE = 0.01
-    EPOCH_COUNT = 100
-    MB_SIZE = 100
-    REPORT = 1
-    TRAIN_RATIO = 0.8
-
-model = tf.keras.Sequential([
-        tf.keras.layers.Dense(units=256, activation='relu', input_shape=(len(X_train.keys()),)),
-        tf.keras.layers.Dense(units=64, activation='relu'),
-        tf.keras.layers.Dense(units=32, activation='relu'),
-        tf.keras.layers.Dense(units=16, activation='relu'),
-        tf.keras.layers.Dense(units=1)
-    ])
-
-optimizer = tf.keras.optimizers.SGD(learning_rate=LEARNING_RATE) # SGD : 경사하강법을 기본적으로 사용하는 옵티마이저
-    model.compile(loss='mean_squared_error',
+optimizer = tf.keras.optimizers.SGD(learning_rate=LEARNING_RATE)
+model.compile(loss='mean_squared_error',
                   optimizer=optimizer,
                   metrics=[EvalAccuracy()])
+
+LEARNING_RATE = 0.01
+EPOCHS = 100
+MB_SIZE = 100
+REPORT = 1
+TRAIN_RATIO = 0.8
+validation_split = 0.2
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_6 (Dense)             (None, 128)               1408      
+                                                                 
+ dense_7 (Dense)             (None, 64)                8256      
+                                                                 
+ dense_8 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 9,729
+Trainable params: 9,729
+Non-trainable params: 0
+_________________________________________________________________
+
+## Test Loss: 4.283
+## Test Accuracy: 0.695
+
+# 세팅 1 은닉층 추가
+
+LEARNING_RATE = 0.01
+EPOCHS = 100
+MB_SIZE = 100
+REPORT = 1
+TRAIN_RATIO = 0.8
+validation_split = 0.2
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 128)               1408      
+                                                                 
+ dense_1 (Dense)             (None, 64)                8256      
+                                                                 
+ dense_2 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_3 (Dense)             (None, 64)                4160      
+                                                                 
+ dense_4 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 18,049
+Trainable params: 18,049
+Non-trainable params: 0
+_________________________________________________________________
+
+## Test Loss: 4.258
+## Test Accuracy: 0.718
+
+# 세팅 2 매개변수(뉴런) 개수 증가(감소 방향)
+
+LEARNING_RATE = 0.01
+EPOCHS = 100
+MB_SIZE = 100
+REPORT = 1
+TRAIN_RATIO = 0.8
+validation_split = 0.2
+
+Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_5 (Dense)             (None, 512)               5632      
+                                                                 
+ dense_6 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_7 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_8 (Dense)             (None, 64)                8256      
+                                                                 
+ dense_9 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 178,177
+Trainable params: 178,177
+Non-trainable params: 0
+_________________________________________________________________
+
+## Test Loss: 4.272
+## Test Accuracy: 0.723
+
+# 세팅 3 매개변수(뉴런) 개수 증가(증가 방향)
+
+LEARNING_RATE = 0.01
+EPOCHS = 100
+MB_SIZE = 100
+REPORT = 1
+TRAIN_RATIO = 0.8
+validation_split = 0.2
+
+Model: "sequential_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_10 (Dense)            (None, 64)                704       
+                                                                 
+ dense_11 (Dense)            (None, 128)               8320      
+                                                                 
+ dense_12 (Dense)            (None, 256)               33024     
+                                                                 
+ dense_13 (Dense)            (None, 512)               131584    
+                                                                 
+ dense_14 (Dense)            (None, 1)                 513       
+                                                                 
+=================================================================
+Total params: 174,145
+Trainable params: 174,145
+Non-trainable params: 0
+_________________________________________________________________
+
+## Test Loss: 4.267
+## Test Accuracy: 0.72
+
+# 세팅 4 미니배치 크기, epoch 증가
+
+LEARNING_RATE = 0.01
+EPOCHS = 1000
+MB_SIZE = 1000
+REPORT = 1
+TRAIN_RATIO = 0.8
+
+Model: "sequential_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_10 (Dense)            (None, 64)                704       
+                                                                 
+ dense_11 (Dense)            (None, 128)               8320      
+                                                                 
+ dense_12 (Dense)            (None, 256)               33024     
+                                                                 
+ dense_13 (Dense)            (None, 512)               131584    
+                                                                 
+ dense_14 (Dense)            (None, 1)                 513       
+                                                                 
+=================================================================
+Total params: 174,145
+Trainable params: 174,145
+Non-trainable params: 0
+_________________________________________________________________
+
+## Test Loss: 4.321
+## Test Accuracy: 0.802
+
+# 세팅 5 미니배치 크기, epoch 증가
+
+LEARNING_RATE = 0.01
+EPOCHS = 10000
+MB_SIZE = 1000
+REPORT = 1
+TRAIN_RATIO = 0.8
+
+Model: "sequential_2"
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 512)               5632      
+                                                                 
+ dense_1 (Dense)             (None, 256)               131328    
+                                                                 
+ dense_2 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_3 (Dense)             (None, 64)                8256      
+                                                                 
+ dense_4 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 178,177
+Trainable params: 178,177
+Non-trainable params: 0
+_________________________________________________________________
+
+# Test Loss: 5.884
+# Test Accuracy: 0.836
