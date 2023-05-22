@@ -73,3 +73,22 @@ print(round(correlation_matrix, 2))
 
 corr_data = round(correlation_matrix, 2)
 corr_data.to_excel('Pulsar_corr.xlsx', index=True)
+
+import tensorflow as tf
+tf.config.list_physical_devices('GPU')
+
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+
+# TensorFlow에서 사용 가능한 GPU 장치 목록을 출력합니다.
+gpu_devices = tf.config.list_physical_devices('GPU')
+print("Available GPUs:", len(gpu_devices))
+
+# GPU가 사용 가능한 경우, GPU 장치를 설정합니다.
+if len(gpu_devices) > 0:
+    tf.config.experimental.set_memory_growth(gpu_devices[0], True)
+    tf.config.set_visible_devices(gpu_devices[0], 'GPU')
