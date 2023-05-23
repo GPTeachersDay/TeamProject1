@@ -47,7 +47,7 @@
     <br>
     <h5>3. 자세한 탐색적 데이터분석 바로가기</h5>
     <div class="text-center indent_0"><a class="btn btn-outline-primary"
-        href="{% url 'GPTeachersDay:eda_abalone' %}">
+        href="http://leeyj85.shop/GPTeachersDay/eda_abalone/">
         EDA 전복 : 바로가기
     </a></div>
 </div>
@@ -70,7 +70,7 @@
     <br>
     <h5>3. 자세한 탐색적 데이터분석 바로가기</h5>
     <div class="text-center indent_0"><a class="btn btn-outline-danger"
-        href="{% url 'GPTeachersDay:eda_star' %}">
+        href="http://leeyj85.shop/GPTeachersDay/eda_star/">
         EDA 별 : 바로가기
     </a></div>
 </div>
@@ -93,7 +93,7 @@
     <br>
     <h5>3. 자세한 탐색적 데이터분석 바로가기</h5>
     <div class="text-center indent_0"><a class="btn btn-outline-success"
-        href="{% url 'GPTeachersDay:eda_steel' %}">
+        href="http://leeyj85.shop/GPTeachersDay/eda_steel/">
         EDA 철판 : 바로가기
     </a></div>
 </div>
