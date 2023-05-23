@@ -204,3 +204,21 @@ model = Classifier_Model_SC(units, L2)
 
 Test Loss: 0.969
 Test Accuracy: 0.789
+
+
+
+15. 스킵 연결 모델(callbacks=[es, rlrp]미사용)
+
+units = [256 for _ in range(8)]
+L2 = [0.001 + i * 0.0025 for i in range(8)]
+model = Classifier_Model_SC(units, L2)
+
+# 하이퍼파라미터 세팅
+LEARNING_RATE = 0.001
+EPOCHS = 1024
+MB_SIZE = 256
+REPORT = 1
+TRAIN_RATIO = 0.8
+
+Test Loss: 1.009
+Test Accuracy: 0.791
