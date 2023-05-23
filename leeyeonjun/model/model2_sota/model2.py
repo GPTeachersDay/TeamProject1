@@ -79,7 +79,9 @@ class Model_2():
     def input_predict(self, input_list):
         
         # 입력된 데이터에 대하여 스케일링
+        print(f'✅ input_list : {input_list}')
         input_scaled = self.scaler.transform([input_list])
+        print(f'✅ input_scaled : {input_scaled}')
 
         # 타겟 예측
         y_RESULT = int(self.model.predict(input_scaled, verbose=0))
