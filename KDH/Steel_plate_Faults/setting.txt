@@ -102,3 +102,105 @@ Minimum_of_Luminosity' + 'Maximum_of_Luminosity' = 'Mean_of_Luminosity'
 
 
 8. 7에서 'Log_X_Index', 'Log_Y_Index'도 포함
+
+
+
+9. 스킵 연결 모델
+
+# 스킵 연결 모델(Skip Connection)
+def Classifier_Model_SC(units, l2):
+    
+    np.random.seed(42)
+    tf.random.set_seed(42)
+    
+    inputs = Input(shape=(len(X_train.keys()),))
+    x = Dense(units=units[0], activation='relu', kernel_regularizer=regularizers.l2(l2[0]))(inputs)
+    x = Dropout(0.2)(x)
+
+    for i in range(1, 8):
+        dense = Dense(units=units[i], activation='relu', kernel_regularizer=regularizers.l2(l2[i]))
+        y = dense(x)
+        y = Dropout(0.2)(y)
+        x = Add()([x, y])
+
+    outputs = Dense(units=7, activation='softmax')(x) # 출력 유닛의 수를 클래스 수에 맞추고, softmax 활성화 함수를 사용
+
+    model = Model(inputs=inputs, outputs=outputs)
+    
+    # 옵티마이저와 손실 함수 설정
+    optimizer = tf.keras.optimizers.Adam(
+                                        learning_rate=0.001,
+                                        beta_1=0.9,
+                                        beta_2=0.999,
+                                        epsilon=1e-08
+                                        )
+
+    model.compile(loss='sparse_categorical_crossentropy',  # 손실함수를 다중 클래스 분류에 적합한 형태로 변경
+                  optimizer=optimizer,
+                  metrics=['accuracy'])
+    
+    return model
+
+units = [1024, 1024, 1024, 1024, 1024, 1024, 1024, 1024]
+L2 = [0.00, 0.002, 0.004, 0.006, 0.008, 0.010, 0.012, 0.014]
+model = Classifier_Model_SC(units, L2)
+
+Test Loss: 1.079
+Test Accuracy: 0.776(과적합 발생)
+
+
+
+10. 스킵 연결 모델 - 검증 세트가 더 높게 나옴
+
+units = [33 for _ in range(16)]
+L2 = [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.010, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016]
+model = Classifier_Model_SC(units, L2)
+
+1/1 [==============================] - 0s 80ms/step - loss: 3.2641 - accuracy: 0.6315 - val_loss: 3.1170 - val_accuracy: 0.6817 - lr: 0.0010
+
+Test Loss: 3.14
+Test Accuracy: 0.709
+
+
+
+11. 스킵 연결 모델
+
+units = [256 for _ in range(8)]
+L2 = [0.001 + i * 0.001 for i in range(8)]
+model = Classifier_Model_SC(units, L2)
+
+Test Loss: 1.128
+Test Accuracy: 0.778
+
+
+
+12. 스킵 연결 모델
+
+units = [256 for _ in range(8)]
+L2 = [0.001 + i * 0.002 for i in range(8)]
+model = Classifier_Model_SC(units, L2)
+
+Test Loss: 0.996
+Test Accuracy: 0.784
+
+
+
+13. 스킵 연결 모델
+
+units = [256 for _ in range(8)]
+L2 = [0.001 + i * 0.003 for i in range(8)]
+model = Classifier_Model_SC(units, L2)
+
+Test Loss: 0.926
+Test Accuracy: 0.784
+
+
+
+14. 스킵 연결 모델
+
+units = [256 for _ in range(8)]
+L2 = [0.001 + i * 0.0025 for i in range(8)]
+model = Classifier_Model_SC(units, L2)
+
+Test Loss: 0.969
+Test Accuracy: 0.789
