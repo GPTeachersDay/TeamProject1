@@ -20,10 +20,10 @@ class Model_3(keras.Model):
                 , TRAIN_RATIO=0.8):
         super().__init__()
         
-        print(f'✅ 인스턴스 생성5')
+        # print(f'✅ 인스턴스 생성1')
         
         # 데이터셋 로드
-        _, _, self.X_train, self.X_test, self.y_train, self.y_test, self.df, self.encoder = self.get_dataset(csv_path)
+        self.X, self.y, self.X_train, self.X_test, self.y_train, self.y_test, self.df, self.encoder, self.scaler= self.get_dataset(csv_path)
         
         # 모델생성
         self.model = self.get_model()
@@ -34,6 +34,8 @@ class Model_3(keras.Model):
                     , TRAIN_RATIO=0.8):
         
         df = pd.read_csv(csv_path)
+        
+        # 인코딩 방식 변경
         df['Fault'] = df[['Pastry', 'Z_Scratch', 'K_Scatch', 'Stains', 'Dirtiness', 'Bumps', 'Other_Faults']].idxmax(axis=1)
         
         # 라벨 인코딩
@@ -45,7 +47,17 @@ class Model_3(keras.Model):
         y = df['Fault']
         X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=TRAIN_RATIO, random_state = 83)
         
-        return X, y, X_train, X_test, y_train, y_test, df, encoder
+        # 스케일링할 피처 선택
+        scaling_features = X_train.columns
+
+        # 스케일링
+        scaler = MinMaxScaler()
+        X_train_org = X_train.copy()  # 원본 데이터 복사
+        X_test_org = X_test.copy()    # 원본 데이터 복사
+        X_train[scaling_features] = scaler.fit_transform(X_train[scaling_features])
+        X_test[scaling_features] = scaler.transform(X_test[scaling_features])
+        
+        return X, y, X_train, X_test, y_train, y_test, df, encoder, scaler
         
     
     def get_model(self):
@@ -91,8 +103,12 @@ class Model_3(keras.Model):
         print(f'✅ input_scaled : {input_scaled}')
 
         # 타겟 예측
-        y_RESULT = int(self.model.predict(input_scaled, verbose=0))
-        # print(f'✅ y_RESULT : {y_RESULT}')
+        result_list = self.model.predict(input_scaled, verbose=0)
+        print(f'✅ result_list : {result_list}')
+        y_label = tf.argmax(result_list[0], 0)
+        print(f'✅ y_label : {y_label}')
+        y_RESULT = self.encoder.inverse_transform([y_label])[0]
+        print(f'✅ y_RESULT : {y_RESULT}')
         
         return y_RESULT
         
