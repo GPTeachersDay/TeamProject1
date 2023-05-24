@@ -1,5 +1,7 @@
 # 프로젝트 링크
 
+- [프로젝트 소개 GitHub](https://github.com/GPTeachersDay){:target="_blank"}
+
 - <a href="https://github.com/GPTeachersDay" target="_blank">프로젝트 소개 GitHub</a>
 - <a href="http://leeyj85.shop/GPTeachersDay" target="_blank">WEB 프로젝트 페이지</a>
 - <a href="http://leeyj85.shop/GPTeachersDay/model/use1/" target="_blank">업그레이드모델 : 전복</a>
