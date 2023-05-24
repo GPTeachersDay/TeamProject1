@@ -135,20 +135,32 @@ class Model_3():
     def input_predict(self, input_list):
         print(f'✅ request : {input_list}')
         
-        
-        # 입력된 데이터에 대하여 스케일링
-        input_scaled = self.scaler.transform([input_list])
-
         # 타겟 예측
-        result_list = self.model.predict(input_scaled, verbose=0)
-        y_label = tf.argmax(result_list[0], 0)
-        y_RESULT = self.encoder.inverse_transform([y_label])[0]
+        result_list = self.model.predict([input_list], verbose=0)
+        # print(f"✅result_list : {result_list}")
+        
+        result_tup = [(i,v) for i,v in enumerate(result_list[0])]
+        result_tup.sort(key=lambda x:-x[1])
+        
+        y_label_1 = result_tup[0][0]
+        y_label_2 = result_tup[1][0]
+        y_RESULT_1 = self.encoder.inverse_transform([y_label_1])[0]
+        y_RESULT_2 = self.encoder.inverse_transform([y_label_2])[0]
+        # print(f"y_RESULT : {y_RESULT_1}")
+        # print(f"y_RESULT : {y_RESULT_2}")
+        
+        y_rate_1 = round(result_list[0][y_label_1]*100, 2)
+        y_rate_2 = round(result_list[0][y_label_2]*100, 2)
         
         template = f"""
         <div class="container text-center border border-3 rounded">
             <h5 class="p-2 mb-1">
-                😃 강판에는 '{y_RESULT}' 결합이 있습니다. 🎉
+                😃 강판에는<br>
+                {y_rate_1}% 확률로 '{y_RESULT_1}' 결합<br>
+                {y_rate_2}% 확률로 '{y_RESULT_2}' 결합<br>
+                들이~ 있습니다. 🔎
             </h5>
         </div>
         """
-        return y_RESULT, template
+
+        return template
