@@ -12,7 +12,6 @@
 ### [3일차 노션](https://www.notion.so/1-3-8df24c40ff3146aaa7f1adf8fc1a1f3a)
 ### [4일차 노션](https://www.notion.so/1-4-f0011339e35143f7a98daff17746856e)
 ### [5일차 노션](https://www.notion.so/1-5-74bbb5f192324074ab4042312ba97c5c)
-### [5일차 노션](https://www.notion.so/1-5-74bbb5f192324074ab4042312ba97c5c)
 ### [6일차 노션](https://www.notion.so/1-6-d71da6cae65446a8805f29ce147c5c37)
 ### [7일차 노션](https://www.notion.so/1-7-70feca0a849544c09cf007c061084982)
 ### [8일차 노션](https://www.notion.so/1-8-c0f4d48ebc0245c3b767df3d687acd08)
@@ -33,7 +32,6 @@
 - <a href="https://www.notion.so/1-2-20fbb27c574f409a838f22aeeab6636d" target="_blank">2일차 노션</a>
 - <a href="https://www.notion.so/1-3-8df24c40ff3146aaa7f1adf8fc1a1f3a" target="_blank">3일차 노션</a>
 - <a href="https://www.notion.so/1-4-f0011339e35143f7a98daff17746856e" target="_blank">4일차 노션</a>
-- <a href="https://www.notion.so/1-5-74bbb5f192324074ab4042312ba97c5c" target="_blank">5일차 노션</a>
 - <a href="https://www.notion.so/1-5-74bbb5f192324074ab4042312ba97c5c" target="_blank">5일차 노션</a>
 - <a href="https://www.notion.so/1-6-d71da6cae65446a8805f29ce147c5c37" target="_blank">6일차 노션</a>
 - <a href="https://www.notion.so/1-7-70feca0a849544c09cf007c061084982" target="_blank">7일차 노션</a>
